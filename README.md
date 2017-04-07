@@ -73,7 +73,7 @@ $ yarn add react-native-fetch
 ## Usage
 
 ```jsx
-import Fetch from './fetch'
+import Fetch from 'react-native-fetch'
 
 export default class Home extends Component {
 
