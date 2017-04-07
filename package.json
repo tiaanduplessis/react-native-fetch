@@ -1,0 +1,39 @@
+{
+  "name": "react-native-fetch",
+  "version": "1.0.0",
+  "description": "Fetch API wrapped as a component for React Native",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiaanduplessis/react-native-fetch.git"
+  },
+  "homepage": "https://github.com/tiaanduplessis/react-native-fetch",
+  "bugs": "https://github.com/tiaanduplessis/react-native-fetch/issues",
+  "author": {
+    "name": "Tiaan",
+    "email": "tiaanduplessis@hotmail.com",
+    "url": "tiaanduplessis.co.za"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "test": "npm run lint",
+    "lint": "standard --parser babel-eslint --verbose",
+    "lint:fix": "standard --parser babel-eslint --fix --verbose",
+    "precommit": "npm test"
+  },
+  "keywords": [
+    "fetch",
+    "component",
+    "react-native",
+    "http",
+    "https",
+    "request",
+    "react-native-fetch"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^0.13.3",
+    "standard": "^10.0.1"
+  }
+}
