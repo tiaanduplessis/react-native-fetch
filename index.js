@@ -1,62 +1,56 @@
 /* global fetch */
 /* eslint no-unused-vars: "off" */
-import React, {Component, PropTypes} from 'react'
+import React, { Component } from 'react'
+import T from 'prop-types'
+import tenFetch from 'tenacious-fetch'
+
+const noop = () => {}
 
 class Fetch extends Component {
   static propTypes = {
-    url: PropTypes.string.isRequired,
-    onResponse: PropTypes.func,
-    onError: PropTypes.func,
-    method: PropTypes.oneOf(['GET', 'POST', 'PUT', 'DELETE']),
-    body: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string
-    ]),
-    headers: PropTypes.object,
-    credentials: PropTypes.string
-  }
+    url: T.string.isRequired,
+    onResponse: T.func,
+    onError: T.func,
+    method: T.oneOf(['GET', 'POST', 'PUT', 'DELETE', 'PATCH']),
+    body: T.oneOfType([T.object, T.string]),
+    headers: T.object,
+    credentials: T.string,
+    retries: T.number,
+    timeout: T.number
+  };
 
   static defaultProps = {
     method: 'GET',
-    onResponse: () => {},
-    onError: () => {}
-  }
+    onResponse: noop,
+    onError: noop
+  };
 
   componentDidMount = () => {
     if (fetch) {
-      this._handleRequest()
+      this.handleReqeuest()
     } else {
       throw new Error('fetch API required to perform request')
     }
-  }
+  };
 
   render () {
     return null
   }
 
-  _handleRequest = () => {
-    const {url, onResponse, onError, method, body, headers, credentials} = this.props
+  handleReqeuest = () => {
+    const { url, onResponse, onError, ...propConfig } = this.props
 
-    let options = {
-      method
-    }
+    const defaultConfig = Object.assign(
+      {
+        fetcher: fetch
+      },
+      propConfig
+    )
 
-    if (headers) {
-      options.headers = headers
-    }
-
-    if (body) {
-      options.body = body
-    }
-
-    if (credentials) {
-      options.credentials = credentials
-    }
-
-    fetch(url, options)
+    return tenFetch(url, defaultConfig)
       .then(onResponse)
       .catch(onError)
-  }
+  };
 }
 
 export default Fetch
