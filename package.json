@@ -32,7 +32,7 @@
     "react": "*"
   },
   "dependencies": {
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.7.0",
     "tenacious-fetch": "^2.0.0"
   },
   "standard": {
