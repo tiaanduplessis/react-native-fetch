@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "prop-types": "^15.6.1",
-    "tenacious-fetch": "^2.0.0"
+    "tenacious-fetch": "^2.2.2"
   },
   "standard": {
     "parser": "babel-eslint",
